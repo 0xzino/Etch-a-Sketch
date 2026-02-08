@@ -6,6 +6,8 @@ function createGrid(size = 16) {
         div.classList.add('box');
         container.appendChild(div);
     }
+
+    console.log(`Grid of ${size} x ${size} created.`);
 }
 
 createGrid(16);
