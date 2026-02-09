@@ -9,8 +9,8 @@ function createGrid(size = 16) {
         const div = document.createElement('div');
         div.classList.add('box');
         div.style.width = div.style.height = `${boxSize}px`;
-        div.addEventListener('mousedown', () => {div.style.backgroundColor = 'black';});
-        div.addEventListener('mouseenter', (e) => {if (e.buttons === 1) {div.style.backgroundColor = 'black';}});
+        div.addEventListener('mousedown', () => {div.style.backgroundColor = getRandomHexColor();});
+        div.addEventListener('mouseenter', (e) => {if (e.buttons === 1) {div.style.backgroundColor = getRandomHexColor();}});
         container.appendChild(div);
     }
 
@@ -35,6 +35,16 @@ function newGrid() {
     }
 }
 
+function getRandomHexColor() {
+  // Generates a random number between 0 and 16777215, converts it to hexadecimal, and returns it as a string
+  let color = Math.floor(Math.random() * 16777215).toString(16);
+  
+  // Pad the string with leading zeros if it's less than 6 characters long
+  // This ensures a valid 6-digit hex code
+  color = color.padStart(6, '0');
+  
+  return `#${color}`;
+}
 
 btnNew.addEventListener('click', newGrid);
 
