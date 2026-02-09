@@ -1,3 +1,5 @@
+const btnClear = document.querySelector("#clear");
+
 function createGrid(size = 16) {
     const container = document.getElementById('container');
     
@@ -21,4 +23,6 @@ function clearGrid() {
     }
     console.log('Grid cleared.');
 }
+
 createGrid(100);
+btnClear.addEventListener('click', clearGrid);
