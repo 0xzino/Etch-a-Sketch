@@ -1,4 +1,4 @@
-const btnClear = document.querySelector("#clear");
+const btnNew = document.querySelector("#newGrid");
 
 function createGrid(size = 16) {
     const container = document.getElementById('container');
@@ -24,5 +24,15 @@ function clearGrid() {
     console.log('Grid cleared.');
 }
 
-createGrid(100);
-btnClear.addEventListener('click', clearGrid);
+function newGrid() {
+    clearGrid();
+    const newSize = prompt('Enter new grid size (1-64): ');
+    if (newSize >= 1 && newSize <= 64) {
+        createGrid(newSize);
+    } else {
+        alert('Invalid size. Please enter a number between 1 and 64.');
+    }
+}
+
+
+btnNew.addEventListener('click', newGrid);
