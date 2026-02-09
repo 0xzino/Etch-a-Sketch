@@ -1,17 +1,18 @@
 const btnNew = document.querySelector("#newGrid");
+const CONTAINER_SIZE = 640;
 
 function createGrid(size = 16) {
     const container = document.getElementById('container');
+    const boxSize = CONTAINER_SIZE / size;
     
     for (let i = 0; i < size * size; i++) {
         const div = document.createElement('div');
         div.classList.add('box');
+        div.style.width = div.style.height = `${boxSize}px`;
+        div.addEventListener('mousedown', () => {div.style.backgroundColor = 'black';});
+        div.addEventListener('mouseenter', (e) => {if (e.buttons === 1) {div.style.backgroundColor = 'black';}});
         container.appendChild(div);
     }
-
-    const containerSize = size * 10;
-    container.style.width = `${containerSize}px`;
-    container.style.height = `${containerSize}px`;
 
     console.log(`Grid of ${size} x ${size} created.`);
 }
@@ -36,3 +37,9 @@ function newGrid() {
 
 
 btnNew.addEventListener('click', newGrid);
+
+createGrid(16);
+
+if (box.hover) {
+    box.style.backgroundColor = 'black';
+}
