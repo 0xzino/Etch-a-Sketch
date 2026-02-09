@@ -7,7 +7,18 @@ function createGrid(size = 16) {
         container.appendChild(div);
     }
 
+    const containerSize = size * 10;
+    container.style.width = `${containerSize}px`;
+    container.style.height = `${containerSize}px`;
+
     console.log(`Grid of ${size} x ${size} created.`);
 }
 
-createGrid(16);
+function clearGrid() {
+    const container = document.getElementById('container');
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+    console.log('Grid cleared.');
+}
+createGrid(100);
